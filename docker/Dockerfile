@@ -44,7 +44,7 @@ RUN curl -sSL https://golang.org/dl/go1.20.5.linux-amd64.tar.gz | tar -C /usr/lo
     echo 'export PATH=$PATH:${HOME}/gopath/bin' >> /etc/profile
  
 # Change UID
-ARG NBN_UID="${NB_UID}}"
+ARG NBN_UID="${NB_UID}"
 ARG NBN_GID="${NB_GID}"
 RUN usermod -u ${NBN_UID} jovyan && \
     groupmod -g ${NBN_GID} users && \
