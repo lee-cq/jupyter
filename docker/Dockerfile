@@ -16,6 +16,7 @@ RUN apt-get update --yes && \
     apt-get install --yes --no-install-recommends \
     # Common useful utilities
     curl \
+    telnet \
     git \
     tzdata \
     unzip \
@@ -41,13 +42,20 @@ RUN curl -sSL https://golang.org/dl/go1.20.5.linux-amd64.tar.gz | tar -C /usr/lo
     echo 'export GOROOT=/usr/local/go' >> /etc/profile && \
     echo 'export GOPATH=${HOME}/gopath' >> /etc/profile && \
     echo 'export PATH=$PATH:${HOME}/gopath/bin' >> /etc/profile
-    
+ 
+# Change UID
+ARG NBN_UID="${NB_UID}"
+ARG NBN_GID="${NB_GID}"
+RUN usermod -u ${NBN_UID} jovyan && \
+    groupmod -g ${NBN_GID} users && \
+    chown -R ${NBN_UID}:${NBN_GID} /home/jovyan && \
+    chown -R ${NBN_UID}:${NBN_GID} /opt/conda
 
 # Switch back to jovyan to avoid accidental container runs as root
-USER ${NB_UID}
+USER ${NBN_UID}
 
 # Add R mimetype option to specify how the plot returns from R to the browser
-COPY --chown=${NB_UID}:${NB_GID} Rprofile.site /opt/conda/lib/R/etc/
+COPY --chown=${NBN_UID}:${NBN_GID} Rprofile.site /opt/conda/lib/R/etc/
 
 # 配置pip settings
 # RUN pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
