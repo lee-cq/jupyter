@@ -4,7 +4,6 @@
 >  章华学院 - 
 
 ### Lesson 01: Design Guidelines - 设计指导
-
 ### Lesson 02: Language Syntax - 语言语法
 ### Lesson 03: Data Structures - 数据结构
 ### Lesson 04: Decoupling - 解耦
@@ -12,9 +11,9 @@
 ### Lesson 06: Error Handling - 错误处理
 ### Lesson 07: Packaging - 包
 ### Lesson 08: Goroutines - 并发
-### Lesson 09: Data Races - 
+### Lesson 09: Data Races - 数据争用
 ### Lesson 10: Channels - 通道
-### Lesson 11: Concurrency Patterns - 数据争用
+### Lesson 11: Concurrency Patterns - 并发模式
 ### Lesson 12: Testing - 测试
 ### Lesson 13: Benchmarking - 基准测试
 ### Lesson 14: Profiling and Tracing - 性能分析和追踪
